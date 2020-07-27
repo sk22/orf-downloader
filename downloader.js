@@ -100,17 +100,18 @@ if (location.hostname !== 'tvthek.orf.at') {
     document.body.appendChild(urlsTextArea)
 
     infoDiv.innerHTML = `<ul>
-  <li>To download the full video, click "Select all", and then "Start download".
-  <li>To download a specific clip, use the "From" and "To" boxes to select the desired time frame.
-  <li>After the download has completed, click the bold "Download" link
-      to save the file to your computer.
-  <li>Many media players (like VLC) should be able to play the <code>.ts</code> file.
-  <li>To maximize compatiblity (for example, to share the video on social media),
-      you might want to convert and re-encode it as an <code>.mp4</code> file using software like
-      <a href="https://handbrake.fr/">HandBrake</a>, or an online converter like
-      <a href="https://cloudconvert.com/ts-to-mp4">cloudconvert</a> (note that uploading the video
-      takes extra time, so offline converters are preferred).
-  </ul>`
+      <li>To download the full video, click "Select all", and then "Start download".
+      <li>To download a specific clip, use the "From" and "To" boxes to select the desired time frame,
+          and click "Start download".
+      <li>After the download has completed, click the bold "Download" link
+          to save the file to your computer.
+      <li>Many media players (like VLC) should be able to play the <code>.ts</code> file.
+      <li>To maximize compatiblity (for example, to share the video on social media),
+          you might want to convert and re-encode it as an <code>.mp4</code> file using software like
+          <a href="https://handbrake.fr/">HandBrake</a>, or an online converter like
+          <a href="https://cloudconvert.com/ts-to-mp4">cloudconvert</a> (note that uploading the video
+          takes extra time, so offline converters are preferred).
+    </ul>`
 
     const divs = [selectDiv, linksDiv, infoDiv]
     divs.forEach(d => (d.style.marginBottom = '0.5rem'))
@@ -196,17 +197,20 @@ if (location.hostname !== 'tvthek.orf.at') {
         selectTo.value = selectFrom.value
       }
     }
-    selectTo.addEventListener('change', () => updateVideoVia(selectTo))
     selectFrom.addEventListener('change', () => updateVideoVia(selectFrom))
+    selectTo.addEventListener('change', () => updateVideoVia(selectTo))
 
-    selectAllButton.innerText = 'Select all'
-    selectAllButton.addEventListener('click', () => {
+    const selectAll = () => {
       selectFrom.value = chunklistUrls[0]
       selectTo.value = chunklistUrls[chunklistUrls.length - 1]
       updateVideoVia(selectTo)
-    })
+    }
 
-    downloadButton.innerText = 'Start download!'
+    selectAllButton.innerText = 'Select all'
+    selectAllButton.addEventListener('click', selectAll)
+    selectAll()
+
+    downloadButton.innerText = 'Start download'
     downloadButton.addEventListener('click', () => {
       downloadButton.disabled = true
       const minIndex = chunklistUrls.indexOf(selectFrom.value)
