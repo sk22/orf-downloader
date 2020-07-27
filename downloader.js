@@ -1,5 +1,5 @@
 if (location.hostname !== 'tvthek.orf.at') {
-  location.replace('https://tvthek.orf.at')
+  location.href = 'https://tvthek.orf.at'
 } else {
   ;(async function downloader() {
     const data = Array.from(document.querySelectorAll('[data-jsb]'))
