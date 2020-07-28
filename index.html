@@ -19,8 +19,16 @@
 
       main {
         text-align: center;
-        width: 30rem;
-        padding: 3rem 1rem;
+        width: 40rem;
+        padding: 4rem 1rem;
+      }
+
+      section {
+        text-align: left;
+      }
+
+      section li {
+        margin-bottom: 0.8rem;
       }
 
       .subtitle {
@@ -37,6 +45,7 @@
         text-decoration: none;
         text-transform: uppercase;
         font-weight: bold;
+        margin-bottom: 2rem;
       }
 
       .bookmarklet span {
@@ -46,10 +55,27 @@
   </head>
   <body>
     <main>
-      <p class="subtitle"><span>bookmark the link by dragging it into your bookmark bar</span></p>
+      <p class="subtitle"><span>bookmark the link below by dragging it into your bookmark bar</span></p>
       <a class="bookmarklet" href="javascript:(function(){s=document.createElement('script');s.type='text/javascript';s.src='https://sk22.github.io/orf-downloader/downloader.js?v='+(Date.now());document.body.appendChild(s);})();">
         <span>TVthek download</span>
       </a>
+      <section>
+        <ul>
+          <li>The bookmark, a so-called bookmarklet, runs a special script when you open it,
+            instead of opening a website. See
+            <a href="https://www.howtogeek.com/189358/beginner-geek-how-to-use-bookmarklets-on-any-device/">
+            How-To Geek's beginner guide</a> to learn more.</li>
+          <li>Open the bookmarklet on a TVthek video page.
+            Running the bookmarlet outside the TVthek will redirect you there.</li>
+          <li>To create a bookmark on mobile, copy the link, create
+            a bookmark of this page, and change the URL to the
+            copied link (which starts with <code>javascript:</code>)</li>
+          <li>You can also copy the link directly into the address bar for
+            one-time use. Your browser might omit the <code>javascript:</code>
+            part for security reasons. In this case, type it out manually,
+            because otherwise, the script will not run.</li>
+        </ul>
+      </section>
     </main>
   </body>
 </html>
