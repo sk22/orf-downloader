@@ -5,8 +5,13 @@ const extractPlaylistDataJson = () =>
     .map(t => JSON.parse(t))
     .find(j => 'playlist' in j)
 
-const makeFileName = () =>
-  location.pathname.match(/\/\d+\/(.*?\/\d+)/)[1].replace(/\//g, '-')
+const makeFileName = data => {
+  const filterById = data.playlist[0].episode_id || data.playlist[0].id
+  return location.pathname
+    .match(/([^\/]*?\/\d+)/g)
+    .find(x => x.includes(filterById))
+    .replace(/\//g, '-')
+}
 
 const getQualityNumberOfSource = source => Number(source.quality[1]) || 0
 /** sources: [{...}, {...}] => { src, quality, type, ... } */
@@ -85,7 +90,7 @@ async function downloader() {
   /** [ { title, sources, subtitles, ... }, {...} ] */
   const { playlist } = data
 
-  const fileName = makeFileName()
+  const fileName = makeFileName(data)
 
   /** [ { title, chunks, subtitles, ... } ] */
   const playlistWithChunklist = await fetchChunklists(playlist)
