@@ -1,0 +1,128 @@
+{
+  "id": "5f1e221ba9484",
+  "playlist_id": 14059354,
+  "internal_id": "5f1e221ba5b1c",
+  "videoplayer_id": "5f1e221ba5b19",
+  "playlist": [
+    {
+      "id": 14734957,
+      "episode_id": 14059354,
+      "title_prefix": "Alltagsgeschichte: Im Espresso",
+      "title_separator": "|",
+      "title": "Alltagsgeschichte: Im Espresso",
+      "description": "In dieser \\u201eAlltagsgeschichte\\u201c portr\\u00e4tiert Elizabeth T. Spira (1942-2019) mit Kameramann Peter Kasperak Stammg\\u00e4ste im \\u201eEspresso\\u201c in Wien. Die Espressos entstanden in den 60er Jahren - meist d\\u00fcstere neonlichtige, schmucklos eingerichtete kleine Kaffee-Bars, die bis weit in die Nacht ge\\u00f6ffnet haben. Getrunken wird viel - doch selten jenes Getr\\u00e4nk, das den Lokalen den Namen schenkt. Und der Durst beginnt bereits in der Fr\\u00fch, wenn die ersten G\\u00e4ste kommen.",
+      "duration": 2628807,
+      "preview_image_url": "https:\\/\\/api-tvthek.orf.at\\/uploads\\/media\\/segments\\/0108\\/25\\/thumb_10724194_segments_player.jpeg",
+      "sources": [
+        {
+          "quality": "Q1A",
+          "quality_string": "Niedrig",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/f4m\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q1A.3gp\\/manifest.f4m",
+          "type": "video\\/mp4",
+          "delivery": "hds",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q4A",
+          "quality_string": "Mittel",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/f4m\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q4A.mp4\\/manifest.f4m",
+          "type": "video\\/mp4",
+          "delivery": "hds",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q6A",
+          "quality_string": "Hoch",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/f4m\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q6A.mp4\\/manifest.f4m",
+          "type": "video\\/mp4",
+          "delivery": "hds",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q8C",
+          "quality_string": "Sehr hoch (HD)",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/f4m\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q8C.mp4\\/manifest.f4m",
+          "type": "video\\/mp4",
+          "delivery": "hds",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q1A",
+          "quality_string": "Niedrig",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/ipad\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q1A.3gp\\/playlist.m3u8",
+          "type": "video\\/mp4",
+          "delivery": "hls",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q4A",
+          "quality_string": "Mittel",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/ipad\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q4A.mp4\\/playlist.m3u8",
+          "type": "application\\/x-mpegURL",
+          "delivery": "hls",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q6A",
+          "quality_string": "Hoch",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/ipad\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q6A.mp4\\/playlist.m3u8",
+          "type": "application\\/x-mpegURL",
+          "delivery": "hls",
+          "protocol": "http"
+        },
+        {
+          "quality": "Q8C",
+          "quality_string": "Sehr hoch (HD)",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/ipad\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_Q8C.mp4\\/playlist.m3u8",
+          "type": "application\\/x-mpegURL",
+          "delivery": "hls",
+          "protocol": "http"
+        },
+        {
+          "quality": "QXB",
+          "quality_string": "Adaptiv",
+          "src": "https:\\/\\/apasfiis.sf.apa.at\\/ipad\\/cms-austria\\/2020-07-23_2105_sd_06_Alltagsgeschich_____14059354__o__4356005615__s14734957_7__BCK2HD_21061602P_21500422P_QXB.mp4\\/playlist.m3u8",
+          "type": "application\\/x-mpegURL",
+          "delivery": "hls",
+          "protocol": "http"
+        }
+      ],
+      "position": 0,
+      "last_segment": true,
+      "subtitles": [
+        {
+          "src": "https:\\/\\/api-tvthek.orf.at\\/uploads\\/media\\/subtitles\\/0108\\/27\\/08865790266a2c130ebd4801b82343aad74b7cb6.xml",
+          "type": "xml",
+          "lang": "de-AT"
+        },
+        {
+          "src": "https:\\/\\/api-tvthek.orf.at\\/uploads\\/media\\/subtitles\\/0108\\/27\\/9bca9add99f23be1c269b84588b4b882d0a270ae.srt",
+          "type": "srt",
+          "lang": "de-AT"
+        },
+        {
+          "src": "https:\\/\\/api-tvthek.orf.at\\/uploads\\/media\\/subtitles\\/0108\\/27\\/cca127c534a8485ab1fef78073888647f630cf88.vtt",
+          "type": "vtt",
+          "lang": "de-AT"
+        },
+        {
+          "src": "https:\\/\\/api-tvthek.orf.at\\/uploads\\/media\\/subtitles\\/0108\\/27\\/01c63de41ab186078b3a7a38c354befac2b9c7d6.smi",
+          "type": "sami",
+          "lang": "de-AT"
+        },
+        {
+          "src": "https:\\/\\/api-tvthek.orf.at\\/uploads\\/media\\/subtitles\\/0108\\/27\\/7828ed849ef367e0a5798c690637b227879b1b44.ttml",
+          "type": "ttml",
+          "lang": "de-AT"
+        }
+      ],
+      "right": "austria",
+      "is_enabled": true,
+      "has_active_youthprotection": false,
+      "pre_bumper": { "active": false, "sources": [] },
+      "post_bumper": { "active": false, "sources": [] },
+      "hash": "7eb5c5e76dbe26503e4c2f2c92979286"
+    }
+  ],
+  "is_liveplayer": false
+}
