@@ -355,8 +355,8 @@ async function downloader() {
   })
 }
 
-if (location.hostname !== 'tvthek.orf.at') {
-  location.href = 'https://tvthek.orf.at'
+if (!location.hostname.startsWith('tvthek')) {
+  alert('Please run this bookmarklet from a TVthek page!')
 } else {
   downloader()
 }
