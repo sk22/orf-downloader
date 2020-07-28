@@ -34,7 +34,7 @@ const getM3uItems = m3uText =>
 
 const getBaseUrl = url => url.match(/.*\//)[0]
 
-const getBaseName = url => url.slice(getBaseUrl(url).length)
+const getBaseName = url => url.slice(getBaseUrl(url).length, url.indexOf('?'))
 
 /** { src, title, ... } => [ https://.../media_0.ts, ... ] */
 const fetchChunklist = async source => {
@@ -237,15 +237,17 @@ async function downloader() {
       )
     })
 
-    const { src: subtitlesSrc } = subtitles.find(s => s.type === 'vtt') ||
-      subtitles[0] || { src: undefined }
+    if (subtitles) {
+      const { src: subtitlesSrc } = subtitles.find(s => s.type === 'vtt') ||
+        subtitles[0] || { src: undefined }
 
-    if (subtitlesSrc) {
-      subtitlesLink.href = subtitlesSrc
-      subtitlesLink.innerText = 'Subtitles'
-      const parts = subtitlesSrc.split('.')
-      const ext = parts[parts.length - 1]
-      subtitlesLink.download = `${fileName}.${ext}`
+      if (subtitlesSrc) {
+        subtitlesLink.href = subtitlesSrc
+        subtitlesLink.innerText = 'Subtitles'
+        const parts = subtitlesSrc.split('.')
+        const ext = parts[parts.length - 1]
+        subtitlesLink.download = `${fileName}.${ext}`
+      }
     }
 
     if (preview_image_url) {
