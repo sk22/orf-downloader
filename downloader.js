@@ -6,7 +6,7 @@ const extractPlaylistDataJson = () =>
     .find(j => 'playlist' in j)
 
 const makeFileName = () =>
-  location.href.match(/.*\/([a-zA-Z].*?)$/)[1].replace(/\//g, '-')
+  location.pathname.match(/\/\d+\/(.*?\/\d+)/)[1].replace(/\//g, '-')
 
 const getQualityNumberOfSource = source => Number(source.quality[1]) || 0
 /** sources: [{...}, {...}] => { src, quality, type, ... } */
@@ -249,12 +249,16 @@ async function downloader() {
   }
   updateFromToSelects()
 
-  const updatePreview = url => {
+  const updatePreview = (url, downloadedVideoName) => {
     video.src = url
-    videoPreviewLabel.innerHTML = `Previewing <a href="${url}">
-      ${getBaseName(url)}</a><br>
-    <small>note that only one chunk (around 10 seconds) at a time can be
-      previewed at a time, and don't let the video's wrong timecode confuse you</small>`
+    videoPreviewLabel.innerHTML = `Previewing
+      <a href="${url}" download="${downloadedVideoName}" target="_blank">
+      ${downloadedVideoName || getBaseName(url)}</a><br>`
+    if (!downloadedVideoName) {
+      videoPreviewLabel.innerHTML += `<small>note that only one
+        chunk (around 10 seconds) can be previewed at a time,
+        and don't let the video's wrong timecode confuse you</small>`
+    }
   }
 
   const updateVideoVia = select => {
@@ -336,7 +340,7 @@ async function downloader() {
       saveLink.appendChild(downloadSpan)
       saveLink.href = blobUrl
       saveLink.download = `${fileName}.ts`
-      updatePreview(blobUrl)
+      updatePreview(blobUrl, saveLink.download)
       downloadProgress.innerText = ''
     }
 
