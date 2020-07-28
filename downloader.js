@@ -70,12 +70,16 @@ async function downloader() {
   const main = document.createElement('main')
   document.body.appendChild(main)
 
+  const dataTextAreaLabel = document.createElement('small')
+  dataTextAreaLabel.innerText =
+    'debug data (contains links to playlists, subtitles, etc.)'
   const dataTextArea = document.createElement('textarea')
   dataTextArea.value = JSON.stringify(data, null, 2)
+  main.appendChild(dataTextAreaLabel)
   main.appendChild(dataTextArea)
 
   Array.from(
-    document.querySelectorAll('style, link[rel=stylesheet], script')
+    document.querySelectorAll('style, link[rel=stylesheet]')
   ).forEach(el => el.remove())
 
   /** [ { title, sources, subtitles, ... }, {...} ] */
@@ -94,25 +98,26 @@ async function downloader() {
   const selectPlaylistItem = document.createElement('select')
   const selectDiv = document.createElement('div')
   const fromLabel = document.createElement('label')
+  fromLabel.innerText = 'From: '  
   const selectFrom = document.createElement('select')
-  selectFrom.name = fromLabel.htmlFor = 'from'
   const toLabel = document.createElement('label')
+  toLabel.innerText = 'To: '
   const selectTo = document.createElement('select')
-  selectTo.name = toLabel.htmlFor = 'to'
   const selectAllButton = document.createElement('button')
   const downloadButton = document.createElement('button')
   const parallelCheckbox = document.createElement('input')
   parallelCheckbox.type = 'checkbox'
   const parallelLabel = document.createElement('label')
   parallelLabel.innerText = 'Parallel downloading'
-  parallelLabel.htmlFor = parallelCheckbox.name = 'parallel'
   const saveLink = document.createElement('a')
   const subtitlesLink = document.createElement('a')
   const thumbnailLink = document.createElement('a')
   const descriptionLink = document.createElement('a')
   const downloadProgress = document.createElement('pre')
-  const urlsTextArea = document.createElement('textarea')
   const linksDiv = document.createElement('div')
+  const urlsTextAreaLabel = document.createElement('small')
+  urlsTextAreaLabel.innerText = 'direct links to all video chunks'
+  const urlsTextArea = document.createElement('textarea')
   const infoDiv = document.createElement('div')
 
   main.appendChild(videoPreviewLabel)
@@ -123,10 +128,10 @@ async function downloader() {
   }
   main.appendChild(selectDiv)
   selectDiv.appendChild(fromLabel)
-  selectDiv.appendChild(selectFrom)
+  fromLabel.appendChild(selectFrom)
   selectDiv.appendChild(document.createTextNode(' '))
   selectDiv.appendChild(toLabel)
-  selectDiv.appendChild(selectTo)
+  toLabel.appendChild(selectTo)
   selectDiv.appendChild(document.createTextNode(' '))
   selectDiv.appendChild(selectAllButton)
   selectDiv.appendChild(document.createTextNode(' '))
@@ -134,17 +139,19 @@ async function downloader() {
   selectDiv.appendChild(document.createTextNode(' '))
   selectDiv.appendChild(parallelLabel)
   selectDiv.appendChild(document.createTextNode(' '))
-  selectDiv.appendChild(parallelCheckbox)
+  parallelLabel.appendChild(parallelCheckbox)
   selectDiv.appendChild(document.createTextNode(' '))
-  selectDiv.appendChild(saveLink)
   main.appendChild(linksDiv)
   linksDiv.appendChild(subtitlesLink)
   linksDiv.appendChild(document.createTextNode(' '))
   linksDiv.appendChild(thumbnailLink)
   linksDiv.appendChild(document.createTextNode(' '))
   linksDiv.appendChild(descriptionLink)
+  linksDiv.appendChild(document.createTextNode(' '))
+  linksDiv.appendChild(saveLink)
   main.appendChild(infoDiv)
   main.appendChild(downloadProgress)
+  main.appendChild(urlsTextAreaLabel)
   main.appendChild(urlsTextArea)
 
   infoDiv.innerHTML = `<ul>
@@ -177,13 +184,11 @@ async function downloader() {
   main.style.maxWidth = '60rem'
   main.style.margin = '0 auto'
   document.body.style.margin = '1rem'
+  document.body.style.fontFamily = 'sans-serif'
 
   video.style.width = '100%'
   video.setAttribute('controls', 'controls')
   video.setAttribute('autoplay', 'autoplay')
-
-  fromLabel.innerText = 'From: '
-  toLabel.innerText = 'To: '
 
   const makeOption = (value, name) => {
     const el = document.createElement('option')
@@ -209,7 +214,7 @@ async function downloader() {
       description,
       title
     } = getSelectedPlaylistItem()
-  
+
     const bothSelects = [selectFrom, selectTo]
     bothSelects.forEach(sel => (sel.innerHTML = ''))
 
@@ -305,6 +310,9 @@ async function downloader() {
       updateProgress()
     }
 
+    saveLink.removeAttribute('href')
+    saveLink.innerText = 'Downloading...'
+
     const downloadTasks = downloadUrls.map((url, i) => () =>
       fetch(url).then(res => (finishedFile(url, i), res))
     )
@@ -319,7 +327,13 @@ async function downloader() {
       console.log(blob)
 
       const blobUrl = URL.createObjectURL(blob)
-      saveLink.innerHTML = '<b>Download</b>'
+      const downloadSpan = document.createElement('span')
+      downloadSpan.style.backgroundColor = 'yellow'
+      downloadSpan.style.fontWeight = 'bold'
+      downloadSpan.style.padding = '0.1rem 0.3rem'
+      downloadSpan.innerText = 'Download'
+      saveLink.innerText = ''
+      saveLink.appendChild(downloadSpan)
       saveLink.href = blobUrl
       saveLink.download = `${fileName}.ts`
       updatePreview(blobUrl)
