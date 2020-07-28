@@ -71,8 +71,8 @@ async function downloader() {
   document.body.appendChild(main)
 
   const dataTextAreaLabel = document.createElement('small')
-  dataTextAreaLabel.innerText =
-    'debug data (contains links to playlists, subtitles, etc.)'
+  dataTextAreaLabel.innerHTML =
+    'debug data (contains links to playlists, subtitles, etc.)<br>'
   const dataTextArea = document.createElement('textarea')
   dataTextArea.value = JSON.stringify(data, null, 2)
   main.appendChild(dataTextAreaLabel)
@@ -98,7 +98,7 @@ async function downloader() {
   const selectPlaylistItem = document.createElement('select')
   const selectDiv = document.createElement('div')
   const fromLabel = document.createElement('label')
-  fromLabel.innerText = 'From: '  
+  fromLabel.innerText = 'From: '
   const selectFrom = document.createElement('select')
   const toLabel = document.createElement('label')
   toLabel.innerText = 'To: '
@@ -251,11 +251,11 @@ async function downloader() {
 
   const updatePreview = url => {
     video.src = url
-    videoPreviewLabel.innerHTML = `Previewing <a href="${url}">${getBaseName(
-      url
-    )}</a>`
+    videoPreviewLabel.innerHTML = `Previewing <a href="${url}">
+      ${getBaseName(url)}</a><br>
+    <small>note that only one chunk (around 10 seconds) at a time can be
+      previewed at a time, and don't let the video's wrong timecode confuse you</small>`
   }
-  updatePreview(selectFrom.value)
 
   const updateVideoVia = select => {
     updatePreview(select.value)
@@ -269,19 +269,19 @@ async function downloader() {
     }
   }
 
+  const selectAll = () => {
+    const { chunks } = getSelectedPlaylistItem()
+    selectFrom.value = chunks[0]
+    selectTo.value = chunks[chunks.length - 1]
+    updateVideoVia(selectFrom)
+  }
+
   selectPlaylistItem.addEventListener('change', () => {
     updateFromToSelects()
     selectAll()
   })
   selectFrom.addEventListener('change', () => updateVideoVia(selectFrom))
   selectTo.addEventListener('change', () => updateVideoVia(selectTo))
-
-  const selectAll = () => {
-    const { chunks } = getSelectedPlaylistItem()
-    selectFrom.value = chunks[0]
-    selectTo.value = chunks[chunks.length - 1]
-    updateVideoVia(selectTo)
-  }
 
   selectAllButton.innerText = 'Select all'
   selectAllButton.addEventListener('click', selectAll)
