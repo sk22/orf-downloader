@@ -23,14 +23,6 @@
         padding: 4rem 1rem;
       }
 
-      section {
-        text-align: left;
-      }
-
-      section li {
-        margin-bottom: 0.8rem;
-      }
-
       .subtitle {
         color: #222;
         letter-spacing: 0.05rem;
@@ -50,6 +42,19 @@
 
       .bookmarklet span {
         border-bottom: 0.11rem solid #222;
+      }
+
+      section {
+        text-align: left;
+      }
+
+      section li {
+        margin-bottom: 0.8rem;
+      }
+      
+      pre {
+        word-break: break-all;
+        white-space: pre-line;
       }
     </style>
   </head>
@@ -74,6 +79,12 @@
             one-time use. Your browser might omit the <code>javascript:</code>
             part for security reasons. In this case, type it out manually,
             because otherwise, the script will not run.</li>
+          <li>For convenience, here is the bookmarklet link:<br>
+            <pre>javascript:(function(){s=document.createElement('script');s.type='text/javascript';s.src='https://sk22.github.io/orf-downloader/downloader.js?v='+(Date.now());document.body.appendChild(s);})();</pre>
+          </li>
+          <li>You can look at the script's source code on the GitHub repository:
+            <a href="https://github.com/sk22/orf-downloader">sk22/orf-downloader</a>
+          </li>
         </ul>
       </section>
     </main>
