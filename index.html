@@ -69,6 +69,21 @@
         letter-spacing: 0.05rem;
         font-size: 1rem;
       }
+
+      .horizontal-flex {
+        display: flex;
+        width: 100%;
+        max-width: 100vw;
+      }
+
+      .horizontal-flex > * {
+        flex: 1;
+      }
+
+      video {
+        width: 100%;
+        max-height: 40rem;
+      }
     </style>
   </head>
   <body>
@@ -101,6 +116,18 @@
             <a href="https://github.com/sk22/orf-downloader">sk22/orf-downloader</a>
           </li>
         </ul>
+      </section>
+      <section>
+        <h2>quick start guide</h2>
+        <p>
+          tutorial for desktop
+          <video controls src="./assets/orf-downloader-desktop-chrome.mp4"></video>
+        </p>
+        <p>
+          tutorial for mobile
+          <video controls src="./assets/orf-downloader-android-chrome.mp4"></video>
+        </p>
+        </div>
       </section>
       <section>
         <h2>architectural limitations</h2>
