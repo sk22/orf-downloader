@@ -34,7 +34,11 @@ const getM3uItems = m3uText =>
 
 const getBaseUrl = url => url.match(/.*\//)[0]
 
-const getBaseName = url => url.slice(getBaseUrl(url).length, url.indexOf('?'))
+const getBaseName = url =>
+  url.slice(
+    getBaseUrl(url).length,
+    url.indexOf('?') === -1 ? undefined : url.indexOf('?')
+  )
 
 /** { src, title, ... } => [ https://.../media_0.ts, ... ] */
 const fetchChunklist = async source => {
