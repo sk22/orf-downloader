@@ -61,9 +61,12 @@
         word-break: break-all;
         white-space: pre-line;
       }
+
+      .center, h2 {
+        text-align: center;
+      }
       
       h2 {
-        text-align: center;
         text-transform: lowercase;
         font-weight: bold;
         letter-spacing: 0.05rem;
@@ -119,14 +122,14 @@
       </section>
       <section>
         <h2>quick start guide</h2>
-        <p>
-          tutorial for desktop
+        <div>
+          <p class="center">tutorial for desktop</p>
           <video controls src="./assets/orf-downloader-desktop-chrome.mp4"></video>
-        </p>
-        <p>
-          tutorial for mobile
+        </div>
+        <div>
+          <p class="center">tutorial for mobile</p>
           <video controls src="./assets/orf-downloader-android-chrome.mp4"></video>
-        </p>
+        </div>
         </div>
       </section>
       <section>
