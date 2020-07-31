@@ -1,9 +1,4 @@
 # orf-downloader
 
-## debug snippets
-
-```
-const data = require('./example-data/data-wien-heute')
-const fetch = require('node-fetch')
-data.playlist[0].sources[7]
-```
+Visit [sk22.github.io/orf-downloader](https://sk22.github.io/orf-downloader)
+for more information!
